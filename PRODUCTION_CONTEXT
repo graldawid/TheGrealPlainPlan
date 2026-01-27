@@ -200,3 +200,50 @@ DAY 3 — GameManager & Game State Skeleton
 
 Exact next task:
 Utworzenie GameManagera oraz enumu GameState i podpięcie ich do przepływu Boot → MainMenu.
+
+DAY 3 — Meta Flow (Map Select → Hero Select → Run)
+
+DECISIONS
+
+[DECYZJA] Meta flow gry realizowany jest w jednej scenie (MetaFlow) sterowanej przez GameState.
+
+[DECYZJA] GameManager działa jako singleton z auto-bootstrapem, niezależnie od kolejności uruchamiania scen.
+
+CHANGES
+
+[ZMIANA] Dodano zabezpieczenie GameManagera przed brakiem instancji (auto-tworzenie przy pierwszym użyciu).
+
+NEW FILES
+
+/Assets/Scenes/MetaFlow.unity — scena meta zawierająca MapSelect i HeroSelect.
+
+/Assets/Scripts/Core/MapSelectController.cs — obsługa wyboru mapy i przejścia do HeroSelect.
+
+/Assets/Scripts/Core/HeroSelectController.cs — obsługa wyboru bohatera i przejścia do stanu Run.
+
+MODIFIED FILES
+
+/Assets/Scripts/Core/GameManager.cs — dodano mechanizm EnsureInstance zabezpieczający przed NullReference.
+
+/Assets/Scripts/Core/MenuController.cs — Play prowadzi do sceny MetaFlow.
+
+/PRODUCTION_CONTEXT.md — aktualizacja o realizację DAY 3.
+
+CURRENT STATE
+
+What works:
+Boot → MainMenu → MetaFlow → MapSelect → HeroSelect → Run działa bez błędów.
+
+What is implemented:
+Meta flow gry, GameState, GameManager, placeholder MapSelect i HeroSelect z testowymi sprite’ami.
+
+What is missing:
+Scena Run / gameplay, logika lotu, plansza, system runu.
+
+NEXT DAY
+
+Next production day:
+DAY 4 — Run Scene & Flight Skeleton
+
+Exact next task:
+Utworzenie sceny Run oraz szkieletu FlightController z deterministycznym ruchem.
