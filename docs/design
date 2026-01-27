@@ -1,1 +1,88 @@
+# Game Design Document — Core Systems
+
+## Player Agency
+Primary interactions:
+- Decision-making during flight (skill usage)
+- Resource management
+- Pre-launch setup optimization
+
+## Heroes
+MVP:
+- 1 hero (scalable to 4)
+- Stats-based differentiation
+
+Hero Properties:
+- Force
+- Weight
+- Intelligence
+- Skill Charges
+
+Hero Abilities:
+- 2 Active Skills
+- 1 Passive Skill
+- Skills may use:
+  - Cooldowns
+  - Per-flight limits
+  - Hybrid systems
+
+## Intelligence Stat
+Affects:
+- Timing window forgiveness
+- Angle tolerance during launch
+
+## Launchers
+- 3 launchers + 1 launched hero (future scaling)
+- Launcher passives influence:
+  - Launch force
+  - Modifiers
+
+## Launch Input
+Hybrid system:
+- Angle selection
+- Power modifiers
+- Timing click
+- Modulated by hero stats and items
+
+## Flight Phase
+- Side-scroll style
+- Active skills usable
+- Resource recovery possible mid-flight
+- Camera remains stable (no dynamic tracking in MVP)
+
+## Board Map
+- 40 tiles per map
+- Fog of War applies to tile effects, not distance
+- Overlay minimap visible during flight
+
+Tile Types:
+- Neutral
+- Event (one-time)
+- Modifier (run-altering)
+- Vendor
+- Checkpoint
+
+## Economy
+- Currency earned per flight/run
+- Vendors appear only on tiles
+- Items are unidentified until purchased
+- One backpack slot per hero
+
+## Bosses (Post-MVP Concept)
+Bosses are system challenges, not enemies:
+- Economy stress tests
+- Skill restriction runs
+- Launcher debuff challenges
+
+## MVP Scope
+Included:
+- 1 map
+- 1 hero
+- Basic launch loop
+- Neutral tiles
+- Vendor with basic items
+
+Excluded:
+- Lore
+- Bosses
+- Multiplayer
 
