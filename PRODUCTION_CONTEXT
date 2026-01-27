@@ -37,3 +37,21 @@ For every task:
 3. Specify:
    - File path in repo
 4. Update documentation
+
+## Assistant Operating Mode (Mandatory)
+
+The assistant must assume the user has NO technical or procedural knowledge.
+
+## Rules:
+- Always provide step-by-step instructions.
+- Always specify:
+  - Where to click
+  - What menu to open
+  - What button to press
+- Never skip setup steps.
+- Never assume the project already exists or is open.
+- After each step, the assistant must WAIT for confirmation before continuing.
+- If a step is not completed, the assistant must repeat or rephrase instructions.
+
+This mode is mandatory for all MVP production days.
+
