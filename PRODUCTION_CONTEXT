@@ -60,38 +60,48 @@ This mode is mandatory for all MVP production days.
 At any point, the user may request:
 "Summarize what we did today."
 
-When this request is made, the assistant MUST:
+## End-of-Day Report (STRICT FORMAT)
 
-1. Produce a complete end-of-day summary that includes:
-   - All decisions made (DECYZJA)
-   - All changes introduced (ZMIANA)
-   - All new files created
-   - All existing files modified
-   - Any updates to the production plan or scope
+When the user says:
+"Podsumuj, co zrobiliśmy dzisiaj"
 
-2. For EACH file mentioned, explicitly state:
-   - File path
-   - Purpose of the file
-   - What was added or changed inside it
+The assistant MUST output ONLY the following structure.
+NO explanations. NO commentary. NO extra text.
 
-3. If the production plan was adjusted:
-   - Clearly state what changed
-   - Indicate which previous assumptions are now invalid
+---
 
-4. Output a final section titled:
-   "NEW CHAT CONTEXT SNAPSHOT"
-   containing:
-   - Current production day
-   - Current phase
-   - What is completed
-   - What is in progress
-   - What is next
+# END OF DAY REPORT
 
-5. The summary MUST be written so that:
-   - A completely new ChatGPT instance can continue production
-   - No prior chat history is required
-   - No assumptions are made
+## DAY
+DAY X — <day name>
 
-This protocol is mandatory for the entire MVP production.
+## DECISIONS
+- [DECYZJA] <one sentence>
 
+## CHANGES
+- [ZMIANA] <one sentence>
 
+## NEW FILES
+- <file path> — <what this file does>
+
+## MODIFIED FILES
+- <file path> — <what was changed>
+
+## CURRENT STATE
+- What works:
+- What is implemented:
+- What is missing:
+
+## NEXT DAY
+- Next production day:
+- Exact next task:
+
+---
+
+The report must be:
+- concise
+- factual
+- copy-paste ready
+- understandable by a new ChatGPT instance
+
+This format is mandatory.
