@@ -49,6 +49,57 @@ Hybrid system:
 - Resource recovery possible mid-flight
 - Camera remains stable (no dynamic tracking in MVP)
 
+## Flight System (Core Gameplay)
+
+### Flight Overview
+The game uses a 2D side-scrolling flight system inspired by arcade launch games (e.g. Burrito Bison / Turtle Toss).
+
+The hero is launched once per attempt and travels from left to right across the screen.
+
+### Axes & Movement
+- X-axis: forward progression (left → right)
+- Y-axis: vertical movement (gravity-based)
+
+The player does NOT directly control position during flight.
+There is no manual steering on X or Y axes.
+
+### Physics Model
+- Deterministic pseudophysics (custom system)
+- No Rigidbody or real physics simulation
+- Movement is calculated via:
+  - Initial launch impulse
+  - Gravity modifier
+  - Drag / decay
+  - Hard caps on speed, height, and flight duration
+
+### Launcher Definition
+The launcher is a conceptual slingshot / catapult system:
+- It provides a single, initial impulse at launch
+- It does not apply force after launch
+- Launcher properties modify:
+  - Initial force
+  - Launch angle tolerance
+  - Additional modifiers via passives
+
+Launchers are NOT physical objects in the scene.
+They are a logical system affecting initial flight parameters.
+
+### Player Interaction During Flight
+Player interaction is limited to:
+- Activating skills
+- Managing resources
+- Reacting to obstacles and modifiers
+
+The player cannot:
+- Steer the hero freely
+- Adjust trajectory directly after launch
+
+### Camera
+- Dynamic follow or zoom
+- Flight occurs within a fixed viewport
+
+Future versions may introduce camera dynamics, but MVP assumes a stable frame.
+
 ## Board Map
 - 40 tiles per map
 - Fog of War applies to tile effects, not distance
