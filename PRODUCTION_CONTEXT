@@ -247,3 +247,51 @@ DAY 4 — Run Scene & Flight Skeleton
 
 Exact next task:
 Utworzenie sceny Run oraz szkieletu FlightController z deterministycznym ruchem.
+
+DAY
+DAY 4 — HeroTemplate & Flight Skeleton
+
+DECISIONS
+
+[DECYZJA] HeroTemplate jest docelowym źródłem danych bohatera i zastępuje wcześniejsze pojęcie HeroBase.
+
+[DECYZJA] Obiekt Hero w scenie Run jest generyczną instancją runtime, a nie konkretnym bohaterem.
+
+[DECYZJA] Flight w MVP jest deterministyczny i nie używa Rigidbody ani Physics.
+
+CHANGES
+
+[ZMIANA] Priorytetem po MetaFlow stało się zbudowanie Run i Flight Skeleton zamiast dalszego UX MetaFlow.
+
+NEW FILES
+
+/Assets/Scripts/Hero/HeroTemplate.cs — ScriptableObject definiujący statystyki lotu bohatera.
+
+/Assets/Data/HeroTemplates/Hero_Test_01.asset — testowy HeroTemplate używany do pierwszego runu.
+
+/Assets/Scenes/Run.unity — scena gameplayowa Run (placeholder pod flight).
+
+/Assets/Scripts/Flight/FlightController.cs — kontroler deterministycznego lotu wykorzystujący HeroTemplate.
+
+MODIFIED FILES
+
+/PRODUCTION_CONTEXT.md — aktualizacja o realizację DAY 4.
+
+CURRENT STATE
+
+What works:
+Scena Run ładuje się poprawnie; bohater startuje lot; porusza się deterministycznie; lot kończy się po czasie bez błędów.
+
+What is implemented:
+HeroTemplate jako dane; Run Scene; FlightController skeleton; połączenie Run z danymi bohatera.
+
+What is missing:
+Wejście do Run z MetaFlow; kolizje; board/mapa; checkpointy; UI runu.
+
+NEXT DAY
+
+Next production day:
+DAY 5 — Run Integration & Launch Control
+
+Exact next task:
+Podpięcie wejścia do Run z MetaFlow oraz kontrola startu lotu (launch trigger zamiast auto-start).
