@@ -360,3 +360,42 @@ Run orchestration, ręczny launch, deterministyczny flight, przekazywanie HeroTe
 
 What is missing:
 Landing logic, liczenie dystansu, wynik runu, board/checkpointy, UI runu.
+
+## DAY
+DAY 6 — Landing, Run Result & Stabilization
+
+## DECISIONS
+- [DECYZJA] Run kończy się logicznym landingiem (Y <= ground level) lub timeoutem.
+- [DECYZJA] RunController odpowiada wyłącznie za stan runu i wynik (distance).
+- [DECYZJA] FlightController odpowiada wyłącznie za ruch i zakończenie lotu.
+
+## CHANGES
+- [ZMIANA] Dodano logiczny landing do FlightController.
+- [ZMIANA] Dodano liczenie dystansu runu w RunController.
+- [ZMIANA] Naprawiono krytyczne błędy struktury plików (duplikacja FlightController).
+
+## NEW FILES
+- brak
+
+## MODIFIED FILES
+- /Assets/Scripts/Flight/FlightController.cs — landing logic i zakończenie lotu.
+- /Assets/Scripts/Core/RunController.cs — metryki runu (start, koniec, distance).
+
+## CURRENT STATE
+- What works:
+  - Launch → Flight → Landing → End działa poprawnie.
+  - Projekt kompiluje się bez błędów.
+- What is implemented:
+  - Deterministyczny flight.
+  - Run state (Idle, Flying, Finished).
+  - Distance calculation.
+- What is missing:
+  - UI runu.
+  - Economy / vendor.
+  - Persistencja wyników.
+
+## NEXT DAY
+- Next production day:
+  DAY 7 — Run UI & Feedback
+- Exact next task:
+  Dodanie HUD runu (distance, state) oraz podstawowego end-screen.
