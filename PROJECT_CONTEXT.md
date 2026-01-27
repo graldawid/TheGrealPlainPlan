@@ -17,10 +17,12 @@ Optimize each hero launch by combining team composition, numeric modifiers, and 
 4. Select Map
 5. Select Heroes (team-based)
 6. Launch hero
-7. Mid-air decisions (skills, resources)
-8. Land on board tile
-9. Apply tile effects
-10. Repeat until checkpoint reached or run fails
+//Launchers are an abstract system (slingshot/catapult metaphor), not physical weapons.
+They exist to modify the initial launch parameters of the hero and are defined purely by stats and passives.//
+8. Mid-air decisions (skills, resources)
+9. Land on board tile
+10. Apply tile effects
+11. Repeat until checkpoint reached or run fails
 
 ---
 
