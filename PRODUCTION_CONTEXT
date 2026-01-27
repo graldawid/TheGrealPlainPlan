@@ -1,0 +1,39 @@
+# Production Context — The Great Plain Plan
+
+## Current Phase
+MVP Production
+
+## Current Day
+DAY 1 — Project Setup & Architecture
+
+## MVP Goal
+Deliver a playable MVP of a 2D arcade roguelike based on deterministic launch-and-flight gameplay within 14 days.
+
+## Core Rules
+- GitHub repository is the single source of truth
+- ChatGPT is an assistant, not memory
+- Every decision, change, or new system MUST be logged in repo
+- No scope expansion during MVP
+- Placeholder assets only
+
+## Locked Decisions
+- 2D Unity
+- Deterministic pseudophysics (no Rigidbody)
+- Side-scrolling launch flight (Burrito-like)
+- Static camera in MVP
+- 1 map, 1 hero, vendor, items
+- Multiplayer NOT in MVP
+
+## What Is Being Built Right Now
+- Unity project setup
+- Core flight architecture
+- GameManager & state handling
+
+## How To Work
+For every task:
+1. Implement or design
+2. Identify:
+   - DECISION / CHANGE / NEW INFO / TODO
+3. Specify:
+   - File path in repo
+4. Update documentation
