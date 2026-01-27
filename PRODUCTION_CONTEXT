@@ -105,3 +105,54 @@ The report must be:
 - understandable by a new ChatGPT instance
 
 This format is mandatory.
+
+
+
+
+## REPORTS:
+
+END OF DAY REPORT
+
+DAY
+DAY 1 — Project Setup & Boot Flow
+
+DECISIONS
+
+[DECYZJA] Unity Input System (New) jest jedynym systemem inputu w MVP.
+
+[DECYZJA] Boot Scene jest jedynym entry pointem gry i obsługuje wyłącznie „Press Start” → MainMenu.
+
+CHANGES
+
+[ZMIANA] Zakres DAY 1 został rozszerzony o implementację Boot Scene i unified input.
+
+NEW FILES
+
+/Assets/Scenes/Boot.unity — scena startowa gry z napisem „PRESS START”.
+
+/Assets/Scenes/MainMenu.unity — pusta scena menu głównego (placeholder).
+
+/Assets/Scripts/Core/BootInputListener.cs — obsługa „Press Start” z klawiatury, myszy i gamepada (Input System).
+
+MODIFIED FILES
+
+/PRODUCTION_CONTEXT.md — aktualizacja DAY 1 o Boot Flow i decyzję dot. Input System.
+
+CURRENT STATE
+
+What works:
+Boot Scene uruchamia się jako pierwsza; „PRESS START” reaguje na klawiaturę, mysz i pad; następuje przejście do MainMenu.
+
+What is implemented:
+Projekt Unity 2D; struktura folderów; Boot Flow end-to-end.
+
+What is missing:
+Logika Main Menu; GameManager i GameState; gameplay.
+
+NEXT DAY
+
+Next production day:
+DAY 2 — Main Menu & Core State Skeleton
+
+Exact next task:
+Implementacja Main Menu UI oraz szkieletu GameManager + GameState.
