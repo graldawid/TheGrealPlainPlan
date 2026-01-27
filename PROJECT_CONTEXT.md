@@ -90,10 +90,44 @@ Optimize each hero launch by combining team composition, numeric modifiers, and 
   - Max flight duration
 
 ## Multiplayer (Post-MVP)
-Planned competitive mode:
-- Draft-based hero selection (Captain’s Mode style)
-- Auction system for heroes and items using shared currency
-- Competition based on progression distance
+
+Multiplayer is competitive, asynchronous-synchronous hybrid.
+
+### Online Multiplayer (Shadow Mode)
+- Players play the same map and run simultaneously.
+- Each player sees a "shadow" (ghost) of the other player’s hero during flight.
+- Shadows are non-interactive and purely informational.
+- No direct interference during flight.
+
+### Turn & Decision Priority
+- The player who lands first on a tile:
+  - Resolves the tile interaction first
+  - Makes decisions while the other player waits
+- Second player resolves their interaction after the first finishes.
+
+### Auctions & Competition
+- Auctions occur:
+  - Before the run (heroes, items)
+  - Between launches (items, modifiers)
+- Players bid using shared or comparable currencies.
+- Auctions are turn-based and blocking (both players must resolve).
+
+### Win Condition
+- Player who reaches farther tiles faster gains advantage.
+- Progression comparison is distance-based, not score-based.
+
+### Hot Seat Mode
+- Turn-based on a single device.
+- Players alternate:
+  - Launch
+  - Tile resolution
+  - Auctions
+- Identical ruleset to online multiplayer without networking.
+
+### MVP Status
+- Multiplayer is NOT part of MVP.
+- Architecture and systems must remain deterministic and replayable.
+- No system should assume single-player-only state ownership.
 
 Status: NOT part of MVP, but architecture should not block it.
 
