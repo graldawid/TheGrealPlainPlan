@@ -1,1 +1,33 @@
+# Technical Design & Architecture
+
+## Engine
+Unity (2D)
+
+## Physics System
+Custom deterministic pseudophysics:
+- Manual velocity integration
+- Gravity modifier
+- Drag coefficient
+- Hard caps for all values
+
+No Rigidbody2D usage in core loop.
+
+## Performance Strategy
+- Object pooling for all flight elements
+- No per-frame allocations
+- FixedUpdate avoided where possible
+
+## Camera
+- Static camera in MVP
+- Overlay UI for minimap and indicators
+
+## Input
+- Designed controller-first
+- Keyboard/mouse supported
+- Abstracted input layer for future platforms
+
+## Multiplayer Readiness
+- Deterministic systems
+- No reliance on physics engine randomness
+- Turn-based and hotseat friendly architecture
 
