@@ -156,3 +156,47 @@ DAY 2 — Main Menu & Core State Skeleton
 
 Exact next task:
 Implementacja Main Menu UI oraz szkieletu GameManager + GameState.
+
+END OF DAY REPORT
+
+DAY
+DAY 2 — Main Menu UI & Basic Interaction
+
+DECISIONS
+
+[DECYZJA] Main Menu w MVP składa się z trzech przycisków: Play, Options, Exit, bez dodatkowej nawigacji na tym etapie.
+
+[DECYZJA] Logika przycisków menu jest obsługiwana przez prosty MenuController bez zależności od GameManagera.
+
+CHANGES
+
+[ZMIANA] Dodano interaktywną scenę MainMenu zamiast pustego placeholdera.
+
+NEW FILES
+
+/Assets/Scripts/Core/MenuController.cs — kontroler obsługujący akcje przycisków Play, Options i Exit w Main Menu.
+
+MODIFIED FILES
+
+/Assets/Scenes/MainMenu.unity — dodano Canvas, layout UI oraz trzy przyciski z podpiętymi akcjami.
+
+/PRODUCTION_CONTEXT.md — aktualizacja o realizację DAY 2.
+
+CURRENT STATE
+
+What works:
+Main Menu wyświetla się poprawnie; przyciski reagują na kliknięcie; Play i Options logują akcje; Exit zatrzymuje Play Mode.
+
+What is implemented:
+UI Main Menu; podstawowa obsługa przycisków; oddzielny kontroler menu.
+
+What is missing:
+Nawigacja klawiatura/pad po menu; przejście Play do gameplayu; GameManager i system stanów.
+
+NEXT DAY
+
+Next production day:
+DAY 3 — GameManager & Game State Skeleton
+
+Exact next task:
+Utworzenie GameManagera oraz enumu GameState i podpięcie ich do przepływu Boot → MainMenu.
