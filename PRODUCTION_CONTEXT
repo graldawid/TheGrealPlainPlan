@@ -399,3 +399,137 @@ DAY 6 — Landing, Run Result & Stabilization
   DAY 7 — Run UI & Feedback
 - Exact next task:
   Dodanie HUD runu (distance, state) oraz podstawowego end-screen.
+
+END OF DAY REPORT — DAY 7
+
+PROJECT:
+TheGreatPlainPlan (Unity 2D)
+
+GOAL OF DAY:
+Zamknac logiczny flow:
+MetaFlow → wybor bohaterow → przekazanie danych → start sceny Run
+BEZ UI docelowego, BEZ inputu docelowego (debug-only).
+
+--------------------------------------------------
+STRUCTURE & FILESYSTEM (FAKTYCZNY STAN REPO)
+--------------------------------------------------
+
+DATA:
+- Assets/Data/HeroTemplates/
+  - HeroTemplate_Base.asset
+    - heroId: hero_base
+    - DisplayName: Hero Base
+    - NIEGRYWALNY, uzywany tylko jako baza do duplikowania
+  - 6 grywalnych HeroTemplate (duplikaty Base)
+    - kazdy ma unikalny heroId
+    - rozne wartosci launchPower / gravity
+    - maxFlightTime ustawiony wysoko (bezpiecznik techniczny)
+
+SCRIPTS:
+- Assets/Scripts/Core/
+  - HeroSelectController.cs
+  - GameManager.cs
+  - MapSelectController.cs
+  - RunController.cs
+
+SCENES:
+- Assets/Scenes/MetaFlow.unity
+- Assets/Scenes/Run.unity
+(Obie sceny dodane do Build Settings)
+
+--------------------------------------------------
+DECISIONS & CORRECTIONS (IMPORTANT)
+--------------------------------------------------
+
+- NIE uzywamy Resources/ do ladowania HeroTemplate
+- HeroTemplate sa przypisywane RECZNIE w Inspectorze
+- HeroTemplate_Base jest pomijany konwencja (heroId == hero_base)
+- HeroSelectController nie ma UI ani inputu
+- Debug ContextMenu uzywane WYŁĄCZNIE testowo
+- maxFlightTime NIE jest mechanika gameplayowa
+  - zostaje jako hard safety cap (ustawiony bardzo wysoko)
+
+UWAGA:
+- Poprzednie propozycje uzycia Resources zostaly ODRZUCONE
+- Obowiazujaca struktura to Assets/Data/HeroTemplates
+
+--------------------------------------------------
+IMPLEMENTED LOGIC
+--------------------------------------------------
+
+HeroSelectController.cs:
+- Laduje 6 grywalnych HeroTemplate (przypisane w Inspectorze)
+- Przechowuje:
+  - availableHeroes (6)
+  - selectedHeroes (max 4)
+- Blokuje:
+  - duplikaty
+  - wybor powyzej 4
+- NIE:
+  - renderuje UI
+  - obsluguje input
+- Debug ContextMenu:
+  - DEBUG: Select first 4 heroes
+  - DEBUG: Clear selection
+  - DEBUG: Confirm selection and start run
+
+GameManager.cs:
+- Singleton z DontDestroyOnLoad
+- Przechowuje:
+  - SelectedHeroesForRun (List<HeroTemplate>, 4)
+- Zachowana kompatybilnosc:
+  - SelectedHeroTemplate (legacy, DAY 5)
+- Zapewnia przejscie danych MetaFlow → Run
+
+MetaFlow → Run:
+- Flow:
+  - Select Map
+  - GameState = HeroSelect
+  - Debug: select 4 heroes
+  - Debug: confirm selection
+  - GameState = Run
+  - LoadScene("Run")
+
+--------------------------------------------------
+CONFIRMED BY RUNTIME LOGS
+--------------------------------------------------
+
+HeroSelect available heroes: 6
+HeroSelect DEBUG: selected 4 heroes
+GameManager: heroes assigned for run = 4
+Game State changed to: Run
+Run State changed to: Idle
+
+--------------------------------------------------
+TEMPORARY / DEBUG ONLY (TO BE REMOVED)
+--------------------------------------------------
+
+- ContextMenu debug w HeroSelectController
+- Brak UI do wyboru bohaterow
+- Brak inputu kontrolera
+- Brak wizualnego feedbacku wyboru
+
+--------------------------------------------------
+DAY 7 STATUS
+--------------------------------------------------
+
+STATE:
+STABLE
+
+DATA FLOW:
+CONFIRMED
+
+ARCHITECTURE:
+CLEAN (MetaFlow -> GameManager -> Run)
+
+NO KNOWN BLOCKERS.
+
+--------------------------------------------------
+NEXT DAY (DAY 8 — NOT STARTED)
+--------------------------------------------------
+
+- Odbior SelectedHeroesForRun w Run.unity
+- Przypisanie bohaterow do TeamSlot_01–04
+- Wizualne oznaczenie slotow (aktywny / used)
+- Usuniecie debug ContextMenu po wprowadzeniu UI
+
