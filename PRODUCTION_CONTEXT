@@ -55,3 +55,43 @@ The assistant must assume the user has NO technical or procedural knowledge.
 
 This mode is mandatory for all MVP production days.
 
+## End-of-Day Summary Protocol (Mandatory)
+
+At any point, the user may request:
+"Summarize what we did today."
+
+When this request is made, the assistant MUST:
+
+1. Produce a complete end-of-day summary that includes:
+   - All decisions made (DECYZJA)
+   - All changes introduced (ZMIANA)
+   - All new files created
+   - All existing files modified
+   - Any updates to the production plan or scope
+
+2. For EACH file mentioned, explicitly state:
+   - File path
+   - Purpose of the file
+   - What was added or changed inside it
+
+3. If the production plan was adjusted:
+   - Clearly state what changed
+   - Indicate which previous assumptions are now invalid
+
+4. Output a final section titled:
+   "NEW CHAT CONTEXT SNAPSHOT"
+   containing:
+   - Current production day
+   - Current phase
+   - What is completed
+   - What is in progress
+   - What is next
+
+5. The summary MUST be written so that:
+   - A completely new ChatGPT instance can continue production
+   - No prior chat history is required
+   - No assumptions are made
+
+This protocol is mandatory for the entire MVP production.
+
+
