@@ -3,8 +3,30 @@
 ## Current Phase
 MVP Production
 
-## Current Day
-DAY 1 — Project Setup & Architecture
+## File Safety & Code Commenting Rules (STRICT)
+
+### File Modification Safety
+The assistant MUST NOT modify, rewrite, or propose changes to any existing file unless:
+
+1. The user has explicitly provided the CURRENT version of the file.
+2. The assistant has confirmed that this is the latest version.
+
+If the assistant identifies a need to change a file, it MUST first respond with:
+"Please paste the current version of <file path> so I can safely propose changes."
+
+The assistant is NOT allowed to assume file contents based on memory or previous chats.
+
+### Code Commenting Requirement
+Every piece of code written by the assistant MUST include clear, intentional comments.
+
+Comments MUST:
+- Explain WHY the code exists, not only WHAT it does
+- Reference the related system or concept from the repository documentation
+- Be written so that a future ChatGPT instance can understand the logic without prior chat context
+
+Code without comments is considered INVALID.
+
+These rules are mandatory for the entire MVP production.
 
 ## MVP Goal
 Deliver a playable MVP of a 2D arcade roguelike based on deterministic launch-and-flight gameplay within 14 days.
@@ -295,3 +317,46 @@ DAY 5 — Run Integration & Launch Control
 
 Exact next task:
 Podpięcie wejścia do Run z MetaFlow oraz kontrola startu lotu (launch trigger zamiast auto-start).
+
+DAY 5 — Run Orchestration, Launch Control & Hero Transfer
+
+DECISIONS
+
+[DECYZJA] Start lotu nie odbywa się automatycznie; flight uruchamiany jest wyłącznie przez jawny input (launch).
+
+[DECYZJA] Run posiada własny RunController, który zarządza stanem runu niezależnie od FlightController.
+
+[DECYZJA] HeroTemplate jest przekazywany z MetaFlow do Run przez GameManager jako transient storage.
+
+CHANGES
+
+[ZMIANA] FlightController przestał sam inicjować lot i komunikuje start/koniec lotu do RunController.
+
+[ZMIANA] GameManager został rozszerzony o pole przechowujące aktualnie wybrany HeroTemplate.
+
+NEW FILES
+
+/Assets/Scripts/Core/RunState.cs — enum definiujący stany runu (Idle, Flying, Finished).
+
+/Assets/Scripts/Core/RunController.cs — kontroler zarządzający przebiegiem runu i reagujący na start/koniec lotu.
+
+MODIFIED FILES
+
+/Assets/Scripts/Flight/FlightController.cs — dodano ręczny launch na input oraz sygnały start/koniec lotu do RunController.
+
+/Assets/Scripts/Core/GameManager.cs — dodano pole SelectedHeroTemplate do przekazywania danych z MetaFlow do Run.
+
+/Assets/Scripts/Core/HeroSelectController.cs — ustawianie wybranego HeroTemplate i przejście do sceny Run.
+
+/PRODUCTION_CONTEXT.md — aktualizacja o realizację DAY 5.
+
+CURRENT STATE
+
+What works:
+Full flow Boot → MainMenu → MetaFlow → HeroSelect → Run → Launch → Flight → End działa bez błędów.
+
+What is implemented:
+Run orchestration, ręczny launch, deterministyczny flight, przekazywanie HeroTemplate do Run, jawny RunState.
+
+What is missing:
+Landing logic, liczenie dystansu, wynik runu, board/checkpointy, UI runu.
